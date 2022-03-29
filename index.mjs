@@ -11,13 +11,16 @@ http.createServer( (req, res) => {
     }
 
     if(req.url.startsWith('/products/') && req.method === "GET") {
-      //set the response
       const name = req.url.split('/')[2];
       const pdt = getByName(name);
         res.write(pdt ? JSON.stringify(pdt) : "Cannot find product with name " + name);
-        //end the response
         res.end();
     }
 
+    else {
+      res.write(`Cannot ${req.method.toLowerCase()} ${req.url}`);
+      res.end();
+    }
 
-}).listen(3000); //the server object listens on port 8080
+
+}).listen(3000);
