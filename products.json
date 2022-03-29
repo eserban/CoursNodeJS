@@ -1,1 +1,13 @@
-[{"name":"pizza","quantity":5},{"name":"mangue","quantity":0},{"name":"orange","quantity":7},{"name":"guitarre","quantity":2},{"name":"kebab","quantity":10},{"name":"poire","quantity":16},{"name":"fraise","quantity":6},{"name":"mangue","quantity":6}]
+[
+  { "name": "pizza", "quantity": 5 },
+  { "name": "mangue", "quantity": 0 },
+  { "name": "orange", "quantity": 7 },
+  { "name": "guitarre", "quantity": 2 },
+  { "name": "kebab", "quantity": 10 },
+  { "name": "poire", "quantity": 16 },
+  { "name": "fraise", "quantity": 6 },
+  { "name": "mangue", "quantity": 6 },
+  { "name": "Coiffeur", "quantity": 27 },
+  { "name": "nicolas", "quantity": 27 },
+  { "name": "quentin", "quantity": 975 }
+]

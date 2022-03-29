@@ -3,7 +3,7 @@ import fs from 'fs';
 let products = JSON.parse(fs.readFileSync("./products.json"));
 
 const updateFile = () => {
-    fs.writeFile('./products.json', JSON.stringify(products), function(){console.log('done')})
+    fs.writeFileSync('./products.json', JSON.stringify(products));
 }
 
 /**
@@ -24,8 +24,6 @@ const add = (name, quantity) => {
   } else {
     products.push({ name, quantity });
   }
-
-  console.log(`${quantity} ${name} ajouté(e)(s)`);
 };
 
 /**

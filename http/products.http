@@ -1,0 +1,18 @@
+###
+# Get all products
+GET http://localhost:3000/products
+
+###
+# Get pizza product
+GET http://localhost:3000/products/pizza
+
+
+###
+# Add new product
+POST http://localhost:3000/add
+Content-Type: application/json
+
+{
+    "name": "quentin",
+    "quantity": 325
+}
