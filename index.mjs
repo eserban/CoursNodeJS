@@ -12,7 +12,9 @@ http.createServer( (req, res) => {
 
     if(req.url.startsWith('/products/') && req.method === "GET") {
       //set the response
-        res.write(JSON.stringify(getByName(req.url.split('/')[2])));
+      const name = req.url.split('/')[2];
+      const pdt = getByName(name);
+        res.write(pdt ? JSON.stringify(pdt) : "Cannot find product with name " + name);
         //end the response
         res.end();
     }
