@@ -1,27 +1,31 @@
 ###
 # Get all products
-GET http://localhost:3000/products
+GET https://nodejs-esgi-server.herokuapp.com/products
+
+###
+# Get all products SARAH
+GET https://product-esgi.herokuapp.com/products
 
 ###
 # Get pizza product
-GET http://localhost:3000/products/pizza
+GET https://node-esgi-cli.herokuapp.com/products/pizza
 
 
 ###
 # Add new product
-POST http://localhost:3000/add
+POST https://nodejs-esgi-server.herokuapp.com/products/add
 Content-Type: application/json
 
 {
-    "name": "quentin",
-    "quantity": 325
+    "name": "h Uh UH",
+    "quantity": 2
 }
 
 ###
 # Delete 1 product
-DELETE http://localhost:3000/products/quentin
+DELETE https://node-esgi-cli.herokuapp.com/products/quentin
 
 
 ###
 # Delete product quantity
-DELETE http://localhost:3000/products/quentin?quantity=500
+DELETE https://node-esgi-cli.herokuapp.com/products/quentin?quantity=500
