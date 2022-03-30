@@ -1,8 +1,12 @@
-import { add, getAll, getByName, updateFile } from './products.mjs';
+import { add, getAll, getByName, updateFile, remove } from './products.mjs';
 import express from 'express';
 
 const router = express.Router();
 
+/**
+ * Get product by name
+ * @param {String} name
+ */
 router.get('/products/:name', (req, res) => {
     const name = req.params.name;
 
@@ -14,6 +18,9 @@ router.get('/products/:name', (req, res) => {
     res.status(code).send(response);
 });
 
+/**
+ * Get all products
+ */
 router.get('/products', (req, res) => {
 
     let response = null;
@@ -23,6 +30,9 @@ router.get('/products', (req, res) => {
     res.status(code).send(response);
 });
 
+/**
+ * Add new product
+ */
 router.post('/add', (req, res) => {
     console.log('pas compris');
 
@@ -42,5 +52,27 @@ router.post('/add', (req, res) => {
 
     res.status(200).send(response);
 });
+
+/**
+ * Delete product quantity, if quantiy is not defined remove only 1 product
+ */
+router.delete('/products/:name', (req, res) => {
+    const { name } = req.params;
+    const quantity = req.query.quantity ?? 1;
+
+    let response = null;
+    let code = 200;
+
+    let removed = remove(name, quantity);
+
+    if (removed) {
+        response = "Product modified successfully";
+    } else {
+        response = "An error occurred while removing the product";
+        code = 400;
+    }
+
+    res.status(code).send(response);
+})
 
 export default router;

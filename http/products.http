@@ -18,5 +18,10 @@ Content-Type: application/json
 }
 
 ###
-# test
-GET http://localhost:3000/
+# Delete 1 product
+DELETE http://localhost:3000/products/quentin
+
+
+###
+# Delete product quantity
+DELETE http://localhost:3000/products/quentin?quantity=500
