@@ -3,7 +3,7 @@ import routes from './routes.mjs';
 import morgan from 'morgan';
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 /**
