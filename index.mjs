@@ -1,13 +1,13 @@
-import http, { get } from 'http';
-import routes from './routes.mjs'
-
-http.createServer( async (req, res) => {
-  const data = await routes(req)
-
-  console.log(data);
-  res.writeHead(data.code, { "Content-Type": data.content ?? "" })
-  res.write(data.data);
-  res.end();
+import express from 'express';
+import routes from './routes.mjs';
 
 
-}).listen(3000);
+const PORT = 3000;
+
+const app = express();
+app.use(express.json());
+app.use('/', routes);
+
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`);
+});

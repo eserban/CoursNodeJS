@@ -1,66 +1,46 @@
 import { add, getAll, getByName, updateFile } from './products.mjs';
+import express from 'express';
 
-export default async (request) => {
-    if (request.url === "/products" && request.method === "GET") {
-        return {
-            "content": "application/json",
-            "code": 200,
-            "data": JSON.stringify(getAll())
-        }
-    } 
+const router = express.Router();
 
-    if(request.url.startsWith('/products/') && request.method === "GET") {
-        const name = request.url.split('/')[2];
-        const pdt = getByName(name);
-        return {
-            "content": "application/json",
-            "code": 200,
-            "data": pdt ? JSON.stringify(pdt) : { "message": "Cannot find product with name " + name }
-        }
+router.get('/products/:name', (req, res) => {
+    const name = req.params.name;
+
+    let response = null;
+    let code = 200;
+    const pdt = getByName(name);
+    response = pdt ? pdt : { "message": "Cannot find product with name " + name };
+
+    res.status(code).send(response);
+});
+
+router.get('/products', (req, res) => {
+
+    let response = null;
+    let code = 200;
+    response = getAll();
+
+    res.status(code).send(response);
+});
+
+router.post('/add', (req, res) => {
+    console.log('pas compris');
+
+    let response = null;
+    let code = 200;
+    const body = req.body;
+    console.log(body);
+
+    if (body.name && body.quantity){
+        add(body.name, body.quantity);
+        updateFile();
+        response = "The product has been added successfully";
+    }else {
+        code = 400;
+        response = "an error occured while adding the product";
     }
 
-    if (request.url === "/add" && request.method === "POST") {
-        let body  = {};
+    res.status(200).send(response);
+});
 
-        body = await getReqData(request);
-        console.log(body);
-        if (body.name && body.quantity){
-            add(body.name, body.quantity);
-            updateFile();
-            return {
-                "code": 200,
-                "data": "The product has been added successfully"
-            }
-        }
-        return {
-            "code": 400,
-            "data": "an error occured while adding the product"
-        }
-    }
-
-    return {
-        "code": 404,
-        "data": `Cannot ${request.method.toLowerCase()} ${request.url}`
-    }
-
-}
-
-function getReqData(req) {
-    return new Promise((resolve, reject) => {
-        try {
-            let body = "";
-            // listen to data sent by client
-            req.on("data", (chunk) => {
-                // append the string version to the body
-                body += chunk.toString();
-            });
-            // listen till the end
-            req.on("end", () => {
-                // send back the data
-                resolve(JSON.parse(body));
-            });
-        } catch (error) {
-            reject(error);
-        }
-    });
-}
+export default router;

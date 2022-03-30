@@ -16,3 +16,7 @@ Content-Type: application/json
     "name": "quentin",
     "quantity": 325
 }
+
+###
+# test
+GET http://localhost:3000/
