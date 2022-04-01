@@ -3,8 +3,11 @@ import routes from './routes.mjs'
 import morgan from 'morgan'
 import swaggerUI from 'swagger-ui-express'
 import docs from './docs/index.mjs'
+import { config } from 'dotenv'
 
+config()
 const PORT = process.env.PORT || 3000
+const HOST = process.env.HOST || 'http://localhost'
 const app = express()
 
 /**
@@ -23,5 +26,5 @@ app.use('/', routes)
  * POrt definition
  */
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
+  console.log(`Example app listening at ${HOST}:${PORT}`)
 })
