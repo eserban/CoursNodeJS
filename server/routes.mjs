@@ -1,4 +1,5 @@
 import { add, getAll, getByName, updateFile, remove } from './products.mjs'
+import { auth } from '././auth/index.mjs'
 import express from 'express'
 
 const router = express.Router()
@@ -69,6 +70,20 @@ router.delete('/products/:name', (req, res) => {
   } else {
     response = 'An error occurred while removing the product'
     code = 400
+  }
+
+  res.status(code).send(response)
+})
+
+router.post('/auth', (req, res) => {
+  const user = req.body
+  let code = 200
+
+  let response = auth(user.name, user.password)
+
+  if (!response) {
+    response = 'Authentification Failed'
+    code = 401
   }
 
   res.status(code).send(response)
