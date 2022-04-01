@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-let products = JSON.parse(fs.readFileSync("./products.json"));
+let products = JSON.parse(fs.readFileSync("./products.json", "utf8"));
 
 const updateFile = () => {
     fs.writeFileSync('./products.json', JSON.stringify(products));

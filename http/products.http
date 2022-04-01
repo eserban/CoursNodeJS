@@ -1,6 +1,6 @@
 ###
 # Get all products
-GET https://nodejs-esgi-server.herokuapp.com/products
+GET http://localhost:3000/products
 
 ###
 # Get all products SARAH
