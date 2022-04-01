@@ -1,20 +1,20 @@
 export default {
   get: {
-    tags: ["Products"],
-    description: "Get All Products",
-    operationId: "getAllProducts",
+    tags: ['Products'],
+    description: 'Get All Products',
+    operationId: 'getAllProducts',
     parameters: [],
     responses: {
       200: {
-        description: "Get all products",
+        description: 'Get all products',
         content: {
-          "application/json": {
+          'application/json': {
             schema: {
-              $ref: "#/components/schemas/products",
+              $ref: '#/components/schemas/products',
             },
           },
         },
       },
     },
   },
-};
+}

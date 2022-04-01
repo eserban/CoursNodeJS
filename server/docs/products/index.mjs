@@ -1,13 +1,13 @@
-import getAll from "./getAll.mjs";
-import schema from "./_model.mjs";
+import getAll from './getAll.mjs'
+import schema from './_model.mjs'
 
 export default {
   paths: {
-    "/products": {
+    '/products': {
       ...getAll,
     },
   },
   schema: {
     ...schema,
   },
-};
+}

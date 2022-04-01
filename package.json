@@ -4,6 +4,14 @@
   "description": "",
   "scripts": {
     "postinstall": "npm install --prefix server",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/test.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/test.js",
+    "lint": "eslint **/*.mjs",
+    "lint:fix": "eslint --fix **/*.mjs"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0"
   }
 }
